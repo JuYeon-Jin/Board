@@ -124,14 +124,11 @@ public class GoogleOAuth {
         // 1. 요청을 보낼 URL, 2. 요청 본문 HttpEntity 객체, 이는 헤더, 본문등의 정보를 포함. 3. 요청에 대해 응답 본문을 어떤형식으로 받을지 지정
         ResponseEntity<String> responseEntity = restTemplate.postForEntity(GOOGLE_TOKEN_REQUEST_URL, params, String.class);
 
-        /*
         if (responseEntity.getStatusCode() == HttpStatus.OK) {
             return responseEntity;
         }
 
         return null;
-         */
-        return responseEntity;
     }
 
     // getAccessToken()
@@ -158,9 +155,7 @@ public class GoogleOAuth {
     }
 
     public OAuthUserDto getUserInfo(ResponseEntity<String> response) throws JsonProcessingException {
-        ObjectMapper objectMapper = new ObjectMapper();
-        OAuthUserDto dto = objectMapper.readValue(response.getBody(), OAuthUserDto.class);
-        return dto;
+        return objectMapper.readValue(response.getBody(), OAuthUserDto.class);
     }
 
 }
