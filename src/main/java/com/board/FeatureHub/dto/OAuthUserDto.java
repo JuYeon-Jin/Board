@@ -16,5 +16,6 @@ public class OAuthUserDto {
     private String given_name;
     private String picture;
     private String locale;
+    private String provider;
 
 }
