@@ -22,7 +22,6 @@ public class TokenService {
                     .and()
                 .claim("userId", userId)
                 .subject("Bob")
-                .expiration(now)
                 .signWith(key)
                 .compact();
 
