@@ -4,7 +4,6 @@ import io.jsonwebtoken.Jwts;
 
 import javax.crypto.SecretKey;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 public class TokenService {
 
