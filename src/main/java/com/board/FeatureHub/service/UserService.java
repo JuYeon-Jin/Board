@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService {
 
-    public void JoinFromGoogle() {
+    public void Test() {
 
         System.out.println("서비스");
 
