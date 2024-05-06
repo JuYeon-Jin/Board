@@ -1,8 +1,10 @@
 package com.board.FeatureHub.controller;
 
 import com.board.FeatureHub.dto.OAuthUserDto;
+import com.board.FeatureHub.dto.UserDto;
 import com.board.FeatureHub.oauth.GoogleOAuth;
 import com.board.FeatureHub.service.OAuthService;
+import com.board.FeatureHub.service.UserService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,10 +29,10 @@ public class OAuthController {
         response.sendRedirect(googleOAuth.returnUrl());
     }
 
-    // 구글 userInfo 받아 오기
+    // 구글 로그인 토큰 발급
     @GetMapping("/oauth/google")
-    public OAuthUserDto result (@RequestParam(name="code") String code) throws JsonProcessingException {
-        return oAuthService.googleOauthLogin(code);
+    public void result (@RequestParam(name="code") String code) throws JsonProcessingException {
+        oAuthService.googleOauthLogin(code);
     }
 
 }

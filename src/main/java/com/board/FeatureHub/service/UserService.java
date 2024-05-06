@@ -1,13 +1,22 @@
 package com.board.FeatureHub.service;
 
+import com.board.FeatureHub.dao.UserDao;
+import com.board.FeatureHub.dto.OAuthUserDto;
+import com.board.FeatureHub.dto.UserDto;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserService {
 
-    public void JoinFromGoogle() {
+    private UserDao userDao;
 
-        System.out.println("서비스");
+    public void oauthLogin(OAuthUserDto oauthUserDto) {
+
+
+    }
+
+    public void homeLogin(UserDto userDto) {
+
 
     }
 

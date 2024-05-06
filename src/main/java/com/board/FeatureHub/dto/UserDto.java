@@ -9,15 +9,15 @@ import lombok.Setter;
 @Setter
 public class UserDto {
 
-    private String UserId;
-    private String Id;
-    private String Pw;
-    private String Provider;
-    private String NickName;
-    private String AccessToken;
-    private String RefreshToken;
-    private String JoinDate;
-    private String ModifiedDate;
-    private String WithdrawDate;
+    private String userId;
+    private String id;
+    private String pw;
+    private String provider;
+    private String nickName;
+    private String accessToken;
+    private String refreshToken;
+    private String joinDate;
+    private String modifiedDate;
+    private String withdrawDate;
 
 }
