@@ -1,7 +1,9 @@
 package com.board.FeatureHub.service;
 
+import com.board.FeatureHub.dao.UserDao;
 import com.board.FeatureHub.dto.OAuthTokenDto;
 import com.board.FeatureHub.dto.OAuthUserDto;
+import com.board.FeatureHub.dto.UserDto;
 import com.board.FeatureHub.oauth.GoogleOAuth;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,5 +24,4 @@ public class OAuthService {
         return googleOAuth.requestUserInfo(tokenDto);
 
     }
-
 }

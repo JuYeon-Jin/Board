@@ -9,23 +9,24 @@ public class TokenService {
 
     private SecretKey key = Jwts.SIG.HS256.key().build();
 
-    public String createJWT(String userId) {
+    // 토큰 발급
+    public String createJWT(String id) {
 
         String token = null;
-        LocalDateTime now = LocalDateTime.now();
-        // Date date = Date.from(now.atZone(ZoneId.systemDefault()).toInstant());
+        // LocalDateTime now = LocalDateTime.now();
 
         token = Jwts.builder()
                 .header()
                     .keyId("aJwtKey")
                     .and()
-                .claim("userId", userId)
-                .subject("Bob")
+                .claim("id", id)
+                .subject("temp")
                 .signWith(key)
                 .compact();
 
-
         return token;
     }
+
+    // 토큰
 
 }
