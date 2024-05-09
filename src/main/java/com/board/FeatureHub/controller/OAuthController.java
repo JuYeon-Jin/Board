@@ -23,6 +23,9 @@ public class OAuthController {
     @Autowired
     private OAuthService oAuthService;
 
+    @Autowired
+    private UserService userService;
+
     // 구글 로그인창 접근
     @GetMapping("/googleLogin")
     public void googleOauthLogin (HttpServletResponse response) throws IOException {
@@ -31,8 +34,15 @@ public class OAuthController {
 
     // 구글 로그인 토큰 발급
     @GetMapping("/oauth/google")
-    public void result (@RequestParam(name="code") String code) throws JsonProcessingException {
-        oAuthService.googleOauthLogin(code);
+    public String result (@RequestParam(name="code") String code) throws JsonProcessingException {
+
+        // 1. 구글 회원 정보 받아오기
+        OAuthUserDto userDto = oAuthService.googleOauthLogin(code);
+
+        // 2. 로그인/회원가입
+        // dto.getEmail() = juuju.00b@gmail.com → id 로 사용
+        // dto.getId() = 114793538545492658262  → pw 로 사용
+        return userService.oauthLogin(userDto.getEmail(), userDto.getId(), "google");
     }
 
 }

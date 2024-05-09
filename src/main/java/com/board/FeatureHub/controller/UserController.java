@@ -19,14 +19,12 @@ public class UserController {
     // 구글 로그인
     public void oauthLogin(OAuthUserDto oauthUserDto) {
 
-        userService.oauthLogin(oauthUserDto);
 
     }
 
     // 일반 로그인 (@RequestBody ?)
     public void homeLogin(UserDto userDto) {
 
-        userService.homeLogin(userDto);
 
     }
 
@@ -36,6 +34,9 @@ public class UserController {
     @GetMapping("/getToken")
     public void getToken() {
 
+        TokenService tokenService = new TokenService();
+
+        tokenService.createJWT("id0101");
     }
 
     // 토큰 검증
