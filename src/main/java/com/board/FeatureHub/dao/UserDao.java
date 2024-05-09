@@ -15,16 +15,17 @@ public interface UserDao {
     public int checkValidToken(@Param("accessToken") String a);
 
     // 회원 가입
-    @Insert("INSERT INTO USER (USER_ID, ID, PW, PROVIDER, NICKNAME) VALUES (UUID(), #{id}, #{pw}, #{provider}, #{nickName})")
-    public void joinUser(@Param("id") String a,
-                         @Param("pw") String b,
-                         @Param("provider") String c,
-                         @Param("nickName") String d);
+    @Insert("INSERT INTO USER (USER_ID, ID, PW, PROVIDER, NICKNAME) VALUES (UUID(), #{a}, #{b}, #{c}, #{d})")
+    public void joinUser(@Param("a") String id,
+                         @Param("b") String pw,
+                         @Param("c") String provider,
+                         @Param("d") String nickName);
 
     // 로그인 시 PK 가져오기
-    @Select("SELECT USER_ID FROM USER WHERE ID = #{id} AND PW = #{pw}")
-    public String getUserIdFromLogin(@Param("id") String a,
-                                     @Param("pw") String b);
+    @Select("SELECT USER_ID FROM USER WHERE ID = #{id} AND PW = #{pw} AND PROVIDER = #{provider}")
+    public String getUserId(@Param("id") String a,
+                            @Param("pw") String b,
+                            @Param("provider") String c);
 
     // 토큰 업데이트(발급)
     @Update("UPDATE USER SET ACCESS_TOKEN = #{accessToken} WHERE USER_ID = #{userId})")
