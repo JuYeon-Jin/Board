@@ -41,6 +41,9 @@ public class OAuthController {
         // 1. 구글 회원 정보 받아오기
         OAuthUserDto userDto = oAuthService.googleOauthLogin(code);
 
+        System.out.println("userDto.getName() = " + userDto.getName());
+        System.out.println("userDto.getGiven_name() = " + userDto.getGiven_name());
+
         // 2. 로그인/회원가입
         // dto.getEmail() = juuju.00b@gmail.com → id 로 사용
         // dto.getId() = 114793538545492658262  → pw 로 사용
