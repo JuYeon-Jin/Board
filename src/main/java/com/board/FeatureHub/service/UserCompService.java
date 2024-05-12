@@ -24,10 +24,31 @@ public class UserCompService {
     @Autowired
     private TokenService tokenService;
 
+    // 토큰 검증
+    public boolean vaildToken(String token) {
+        if (token == null) {
+            return false;
+        } else {
+            return true;
+        }
+
+
+    }
+
     // 로그인 → 토큰(Access / Refresh) 발급
     public TokenRepDto loginUser(String id, String pw, String provider) {
         String userId = userService.getUserId(id, pw, provider);
-        return new TokenRepDto(tokenService.createAccessToken(userId), tokenService.createRefreshToken());
+        // return new TokenRepDto(tokenService.createAccessToken(userId), tokenService.createRefreshToken());
+        String Access = tokenService.createAccessToken(userId);
+        System.out.println("Access = " + Access);
+        tokenService.parsingToken(Access);
+        String Refresh = tokenService.createRefreshToken();
+        System.out.println("Refresh = " + Refresh);
+        tokenService.parsingToken(Refresh);
+
+
+
+        return new TokenRepDto(Access, Refresh);
     }
 
     // 아이디 확인
